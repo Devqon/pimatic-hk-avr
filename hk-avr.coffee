@@ -27,7 +27,7 @@ module.exports = (env) ->
 
   # ###MyPlugin class
   # Create a class that extends the Plugin class and implements the following functions:
-  class MyPlugin extends env.plugins.Plugin
+  class HkAvrPlugin extends env.plugins.Plugin
 
     # ####init()
     # The `init` function is called by the framework to ask your plugin to initialise.
@@ -44,6 +44,6 @@ module.exports = (env) ->
 
   # ###Finally
   # Create a instance of my plugin
-  myPlugin = new MyPlugin
+  hkAvrPlugin = new HkAvrPlugin
   # and return it to the framework.
-  return myPlugin
+  return hkAvrPlugin
