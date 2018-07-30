@@ -3,38 +3,23 @@ module.exports = (env) ->
 
   Promise = env.require 'bluebird'
   commons = require('pimatic-plugin-commons')(env)
-  TelnetAppProtocol = require('./telnet-app-protocol')(env)
   HttpAppProtocol = require('./http-app-protocol')(env)
   deviceConfigTemplates = [
     {
-      "name": "hk AVR Status",
-      "class": "hkAvrPresenceSensor",
-      "volumeDecibel": true,
-    }
-    {
-      "name": "hk AVR Power",
+      "name": "Hk AVR Power",
       "class": "hkAvrPowerSwitch"
     }
     {
-      "name": "hk AVR Zone Switch",
-      "class": "hkAvrZoneSwitch"
-    }
-    {
-      "name": "hk AVR Mute",
+      "name": "Hk AVR Mute",
       "class": "hkAvrMuteSwitch"
     }
     {
-      "name": "hk AVR Master Volume",
+      "name": "Hk AVR Master Volume",
       "class": "hkAvrMasterVolume",
       "maxAbsoluteVolume": 89.5
     }
     {
-      "name": "hk AVR Zone Volume",
-      "class": "hkAvrZoneVolume",
-      "maxAbsoluteVolume": 89.5
-    }
-    {
-      "name": "hk AVR Input Selector",
+      "name": "Hk AVR Input Selector",
       "class": "hkAvrInputSelector",
     }
   ]
@@ -44,7 +29,7 @@ module.exports = (env) ->
   ]
 
   # ###hkAvrPlugin class
-  class hkAvrPlugin extends env.plugins.Plugin
+  class HkAvrPlugin extends env.plugins.Plugin
     init: (app, @framework, @config) =>
       @debug = @config.debug || false
       @base = commons.base @, 'Plugin'
@@ -95,4 +80,4 @@ module.exports = (env) ->
   # ###Finally
   # Create a instance of my plugin
   # and return it to the framework.
-  return new hkAvrPlugin
+  return new HkAvrPlugin

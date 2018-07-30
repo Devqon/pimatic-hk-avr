@@ -16,5 +16,6 @@ module.exports = {
         for TELNET protocol and port 80 for HTTP protocol
       """
       type: "number"
+      default: 10025,
       required: false
 }

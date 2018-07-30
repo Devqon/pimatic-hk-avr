@@ -1,4 +1,5 @@
-{ "name": "pimatic-hk-avr",
+{
+  "name": "pimatic-hk-avr",
   "description": "The plugin description",
   "author": "Your Name <you@example.com> (http://your-website)",
   "main": "hk-avr",
@@ -16,6 +17,10 @@
   },
   "configSchema": "hk-avr-config-schema.coffee",
   "dependencies": {
+    "pimatic-plugin-commons": "^0.9.8",
+    "promise-retryer": "0.0.1",
+    "restler-promise": "0.0.9",
+    "socket.io-client": "^2.1.1"
   },
   "peerDependencies": {
     "pimatic": "0.8.*"
