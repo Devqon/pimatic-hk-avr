@@ -5,22 +5,7 @@ module.exports = {
     description: "Hk AVR Power Switch"
     type: "object"
     extensions: ["xLink", "xPresentLabel", "xAbsentLabel", "xAttributeOptions"]
-    properties:
-      interval:
-        description: """
-          The time interval in seconds (minimum 2) at which the presence state of the
-          AVR will be read
-        """
-        type: "number"
-        default: 60
-        minimum: 2
-      volumeDecibel:
-        description: """
-          If true, the volume is presented in dB, otherwise relative level between 00
-          and 99 is displayed
-        """
-        type: "boolean"
-        default: false
+    properties: []
   },
   hkAvrMasterVolume: {
     title: "Hk AVR Master Volume"
@@ -28,49 +13,39 @@ module.exports = {
     type: "object"
     extensions: ["xLink", "xPresentLabel", "xAbsentLabel", "xAttributeOptions"]
     properties:
-      interval:
-        description: """
-          The time interval in seconds (minimum 2) at which the volume state of the
-          AVR will be read
-        """
-        type: "number"
-        default: 60
-        minimum: 2
-      volumeDecibel:
-        description: """
-          If true, the volume is presented in dB, otherwise relative level between 00
-          and 99 is displayed
-        """
-        type: "boolean"
-        default: false
-      volumeLimit:
-        description: """
-          If greater than 0, enforce a volume limiter for the maximum volume level
-        """
-        type: "number"
-        default: 0
-      maxAbsoluteVolume:
-        description: """
-          Maximum absolute volume which can be set. Some receivers already stop at a
-          lower value than 99
-        """
-        type: "number"
-        default: 99
+      buttons:
+        description: "The Down and Up buttons"
+        type: "array"
+        default: [
+          {
+            id: "Down"
+          }
+          {
+            id: "Up"
+          }
+        ]
+        format: "table"
+        items:
+          type: "object"
+          properties:
+            id:
+              enum: [
+                "Down", "Up"
+              ]
+              description: "The up down buttons"
+            text:
+              type: "string"
+              description: """
+                The button text to be displayed. The id will be displayed if not set
+              """
+              required: false
   },
   hkAvrPowerSwitch: {
     title: "Hk AVR Power Switch"
     description: "Hk AVR Power Switch"
     type: "object"
     extensions: ["xLink", "xOnLabel", "xOffLabel"]
-    properties:
-      interval:
-        description: """
-          The time interval in seconds (minimum 2) at which the power state
-          of the AVR will be read
-        """
-        type: "number"
-        default: 60
-        minimum: 2
+    properties: []
   },
   hkAvrMuteSwitch: {
     title: "Hk AVR Mute Switch"
@@ -80,16 +55,8 @@ module.exports = {
     properties:
       zone:
         description: "The zone to be controlled"
-        enum: ["Main Zone", "ZONE2", "ZONE3"]
+        enum: ["Main Zone", "ZONE2"]
         default: "Main Zone"
-      interval:
-        description: """
-          The time interval in seconds (minimum 2) at which the mute
-          state of the AVR will be read
-        """
-        type: "number"
-        default: 60
-        minimum: 2
   },
   hkAvrInputSelector: {
     title: "Hk AVR Input Selector"
@@ -101,14 +68,6 @@ module.exports = {
         description: "The zone to be controlled"
         enum: ["Main Zone", "ZONE2"]
         default: "Main Zone"
-      interval:
-        description: """
-          The time interval in seconds (minimum 2) at which the selector
-          state of the AVR will be read
-        """
-        type: "number"
-        default: 60
-        minimum: 2
       buttons:
         description: "The inputs to select from"
         type: "array"
