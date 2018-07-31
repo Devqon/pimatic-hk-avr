@@ -3,7 +3,7 @@ module.exports = (env) ->
 
   Promise = env.require 'bluebird'
   commons = require('pimatic-plugin-commons')(env)
-  HttpAppProtocol = require('./http-app-protocol')(env)
+  api = require('./hk-avr-api')(env)
   deviceConfigTemplates = [
     {
       "name": "Hk AVR Power",
@@ -33,7 +33,7 @@ module.exports = (env) ->
     init: (app, @framework, @config) =>
       @debug = @config.debug || false
       @base = commons.base @, 'Plugin'
-      @protocolHandler = new HttpAppProtocol @config
+      @api = new api @config
 
       # register devices
       deviceConfigDef = require("./device-config-schema")

@@ -15,29 +15,18 @@ module.exports = (env) ->
       @id = @config.id
       @name = @config.name
       @zoneCmd = 'mute-toggle'
-      @lastPowerState=null
-      @interval = @_base.normalize @config.interval, 2
       @debug = @plugin.debug || false
-      @responseHandler = @_createResponseHandler()
-      @plugin.protocolHandler.on 'response', @responseHandler
       super()
       @_state = false
 
     destroy: () ->
       @_base.cancelUpdate()
-      @plugin.protocolHandler.removeListener 'response', @responseHandler
       super()
-
-    _createResponseHandler: () ->
-      return (response) =>
-        @_base.debug "Response", response.matchedResults
 
     changeStateTo: (newState) ->
       return new Promise (resolve, reject) =>
         @_base.debug "Calling mute toggle from switch"
-        resolve()
-        return
-        @plugin.protocolHandler.sendRequest(@zoneCmd).then =>
+        @plugin.api.sendRequest(@zoneCmd).then =>
           @_setState newState
           resolve()
         .catch (err) =>

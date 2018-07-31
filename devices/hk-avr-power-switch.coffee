@@ -10,25 +10,16 @@ module.exports = (env) ->
       @_base = commons.base @, @config.class
       @id = @config.id
       @name = @config.name
-      @interval = @_base.normalize @config.interval, 2
       @debug = @plugin.debug || false
-      @responseHandler = @_createResponseHandler()
-      @plugin.protocolHandler.on 'response', @responseHandler
       @_state = false
       super()
 
     destroy: () ->
-      @_base.cancelUpdate()
-      @plugin.protocolHandler.removeListener 'response', @responseHandler
       super()
-
-    _createResponseHandler: () ->
-      return (response) =>
-        @_base.debug "Response", response.matchedResults
 
     changeStateTo: (newState) ->
       return new Promise (resolve, reject) =>
-        @plugin.protocolHandler.sendRequest(if newState then 'power-on' else 'sleep').then =>
+        @plugin.api.sendRequest(if newState then 'power-on' else 'power-off').then =>
           @_setState newState
           resolve()
         .catch (err) =>

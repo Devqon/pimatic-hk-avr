@@ -12,8 +12,7 @@ module.exports = {
       type: "string"
     port:
       description: """
-        AVR control port (inly required for testing). Defaults to port 23
-        for TELNET protocol and port 80 for HTTP protocol
+        AVR control port (inly required for testing). Defaults to port 10025
       """
       type: "number"
       default: 10025,
