@@ -18,10 +18,12 @@ module.exports = {
         type: "array"
         default: [
           {
-            id: "Down"
+            id: "down"
+            text: "Down"
           }
           {
-            id: "Up"
+            id: "up"
+            text: "Up"
           }
         ]
         format: "table"
@@ -30,7 +32,7 @@ module.exports = {
           properties:
             id:
               enum: [
-                "Down", "Up"
+                "down", "up"
               ]
               description: "The up down buttons"
             text:

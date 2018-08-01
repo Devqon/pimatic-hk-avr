@@ -6,9 +6,14 @@
   "files": [
     "hk-avr.coffee",
     "README.md",
-    "hk-avr-config-schema.coffee"
+    "LICENSE",
+    "hk-avr-config-schema.coffee",
+    "hk-avr-api.coffee",
+    "device-config-schema.coffee",
+    "actions",
+    "devices"
   ],
-  "version": "0.8.0",
+  "version": "0.1.0",
   "homepage": "http://your-plugin-website",
   "private": true,
   "repository": {
