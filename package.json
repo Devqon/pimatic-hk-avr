@@ -1,7 +1,7 @@
 {
   "name": "pimatic-hk-avr",
-  "description": "The plugin description",
-  "author": "Your Name <you@example.com> (http://your-website)",
+  "description": "A pimatic plugin for controlling a harman kardon AVR",
+  "author": "Sander Geerts <s.geerts@live.nl>",
   "main": "hk-avr",
   "files": [
     "hk-avr.coffee",
@@ -13,19 +13,22 @@
     "actions",
     "devices"
   ],
+  "keywords": [
+    "pimatic", "hk", "harman kardon", "avr"
+  ],
   "version": "0.1.0",
-  "homepage": "http://your-plugin-website",
+  "homepage": "https://github.com/Devqon/pimatic-hk-avr",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/Devqonpimatic-hk-avr.git"
+    "url": "git://github.com/Devqon/pimatic-hk-avr.git"
   },
   "configSchema": "hk-avr-config-schema.coffee",
   "dependencies": {
     "pimatic-plugin-commons": "^0.9.8"
   },
   "peerDependencies": {
-    "pimatic": "0.8.*",
+    "pimatic": ">=0.8.0 <1.0.0",
     "request-promise": "^2.0.1"
   },
   "engines": {
